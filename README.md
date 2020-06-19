@@ -52,7 +52,7 @@
 
 경사하강법이란 함수의 기울기(경사)를 낮은쪽으로 계속 이동시켜 극값에 이를때까지 반복시키는 것을 말합니다. 제시된 함수의 기울기로 최소값을 찾아내는 머신러닝 알고리즘입니다. 여기서 제시된 함수란 비용함수(cost function)을 말합니다. 이 비용함수를 최소화 하기 위해 매개변수를 반복적으로 조정하는 과정이라고도 할 수 있겠습니다. 확률적 경사하강법은 학습을 통해 모델의 최적 파라미터(최소값)을 찾는것이 목표입니다.	
 
-![sgd](img\sgd.png)
+![sgd](https://github.com/minjj0905/NumericalAnalysis-SGD-Project/blob/master/img/sgd.png)
 
 경사하강법은 정확하게 가중치를 찾아가지만 가중치를 변경할때마다 전체 데이터에 대해 미분해야 하므로 계산량이 매우 많습니다. 이러한 경사하강법의 단점을 보완한 알고리즘 중 하나가 바로 확률적 경사하강법입니다.
 
@@ -62,7 +62,7 @@
 
 확률적 경사하강법(Stodchastic Gradient Descent)은 파라미터를 업데이트 할 때, 무작위로 샘플링 된 학습 데이터를 이용하여 비용함수(cost function)의 기울기를 계산합니다. 이 방법은 모델을 훨씬 더 자주 업데이트하며, 성능 개선 정도를 빠르게 확인 할 수 있습니다. 그러나 경사하강법보다 노이즈가 심하고 최적해의 정확도가 떨어집니다.
 
-![sgd-gd](img\sgd-gd.png)
+![sgd-gd](https://github.com/minjj0905/NumericalAnalysis-SGD-Project/blob/master/img/sgd-gd.png)
 
 수식은 다음과 같습니다.
 $$
@@ -74,7 +74,7 @@ $$
 
 확률적 경사하강법은 전체 데이터가 아니라 랜덤하게 추출한 일부데이터를 사용하기 때문에 불안정하고 오차율이 큽니다. 이러한 단점을 보완하기 위한 방법이 Mini batch를 이용한 방법입니다.
 
-![sgd-mini](img\sgd-mini.png)
+![sgd-mini](https://github.com/minjj0905/NumericalAnalysis-SGD-Project/blob/master/img/sgd-mini.png)
 
 노이즈가 많이 줄어든 모습을 볼 수 있습니다.
 
@@ -380,7 +380,7 @@ step:1000, loss:98.185654, W:58.797707, b:10.397291
 
 **그래프**
 
-![sgd-tf-graph](img\sgd-tf-graph.PNG)
+![sgd-tf-graph](https://github.com/minjj0905/NumericalAnalysis-SGD-Project/blob/master/img/sgd-tf-graph.PNG)
 
 
 
@@ -800,7 +800,7 @@ def test_stochastic_gradient_descent(self):
 
 여기서 인공 데이터로 넣어준 data_x, data_y는 기본적인 선형 그래프로 아래 식을 의미합니다.
 
-![test-data](img\test-data.PNG)
+![test-data](https://github.com/minjj0905/NumericalAnalysis-SGD-Project/blob/master/img/test-data.PNG)
 $$
 f(x) = x
 $$
@@ -885,7 +885,7 @@ if __name__ == "__main__":
 
 다음 코드를 실행하면 처음에 original data가 표시되게 됩니다.
 
-![std-origin](C:img\std-origin.PNG)
+![std-origin](https://github.com/minjj0905/NumericalAnalysis-SGD-Project/blob/master/img/std-origin.PNG)
 
 
 
@@ -921,7 +921,7 @@ fianl :  7.830029653074914 56.983825546944914
 
 **결과 그래프**
 
-![sgd-fitting](img\sgd-fitting.PNG)
+![sgd-fitting](https://github.com/minjj0905/NumericalAnalysis-SGD-Project/blob/master/img/sgd-fitting.PNG)
 
 학습이 진행된 후에 피팅된 결과를 확인할 수 있습니다. 안정적으로 피팅되었습니다.
 
@@ -939,7 +939,7 @@ f(x,y) = (a - x)^2 + b(y-x^2)^2
 $$
 일반적으로 a=1, b=100 을 대입해 사용합니다. 변수를 대입하여 그래프를 그려보면 다음과 같은 형태가 나타나게 됩니다.
 
-![rosenbrock](img\rosenbrock.png)
+![rosenbrock](https://github.com/minjj0905/NumericalAnalysis-SGD-Project/blob/master/img/rosenbrock.png)
 
 
 
@@ -1077,7 +1077,7 @@ OK
 
 **그래프**
 
-![rosenbrock-sgd](img\rosenbrock-sgd.JPG)
+![rosenbrock-sgd](https://github.com/minjj0905/NumericalAnalysis-SGD-Project/blob/master/img/rosenbrock-sgd.JPG)
 
 > 화살표를 이용하여 그리는 방법을 해당 코드 내에서는 모르겠어서 그리지 못했습니다...
 
