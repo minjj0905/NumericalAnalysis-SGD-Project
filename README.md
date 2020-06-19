@@ -12,27 +12,33 @@
 
 ### 목차
 
-  1. 최적화 알고리즘 개요 및 동작원리 - 확률적 경사하강법(SGD)
+##### 1. 최적화 알고리즘 개요 및 동작원리 - 확률적 경사하강법(SGD)
 
-2. 확률적 경사하강법(SGD)의 동작코드와 단위테스트
-    	1. 확률적 경사하강법(SGD) 동작코드
-   	2. 단위테스트 결과
-   	3. 그래프로 보는 실행결과
-3. 확률적 경사하강법(SGD) 구체화
-     1. 확률적 경사하강법(SGD) 모듈 함수
-     2. 확률적 경사하강법(SGD) 구현
+##### 2. 확률적 경사하강법(SGD)의 동작코드와 단위테스트
 
-4. 구체화 모듈 단위테스트
-     1. 필요 함수 단위테스트
-     2. 확률적 경사하강법(SGD) 단위테스트
-     3. 그래프로 보는 실행 결과
+	1. 확률적 경사하강법(SGD) 동작코드
+ 	2. 단위테스트
+ 	3. 그래프로 보는 실행결과
 
-5. 최적화 알고리즘 검증 - 로젠브록 함수
-     1. 로젠브록 함수 개요
+##### 3. 확률적 경사하강법(SGD) 구체화
 
-     2. 로젠브록 함수를 이용한 최적화 알고리즘 검증
+1. 확률적 경사하강법(SGD) 모듈 함수
+2. 확률적 경사하강법(SGD) 구현
 
-          
+##### 4. 구체화 모듈 단위테스트
+
+1. 필요 함수 단위테스트
+2. 확률적 경사하강법(SGD) 단위테스트
+3. 그래프로 보는 실행결과
+
+##### 5. 최적화 알고리즘 검증 - 로젠브록 함수
+
+1. 로젠브록 함수 개요
+2. 로젠브록 함수를 이용한 최적화 알고리즘 검증
+
+##### 6. 프로젝트 소감
+
+
 
 ---
 
@@ -56,7 +62,7 @@
 
 확률적 경사하강법(Stodchastic Gradient Descent)은 파라미터를 업데이트 할 때, 무작위로 샘플링 된 학습 데이터를 이용하여 비용함수(cost function)의 기울기를 계산합니다. 이 방법은 모델을 훨씬 더 자주 업데이트하며, 성능 개선 정도를 빠르게 확인 할 수 있습니다. 그러나 경사하강법보다 노이즈가 심하고 최적해의 정확도가 떨어집니다.
 
-![sgd-gd](C:\GitHub\NumericalAnalysisProject-SGD\img\sgd-gd.png)
+![sgd-gd](img\sgd-gd.png)
 
 수식은 다음과 같습니다.
 $$
@@ -68,7 +74,7 @@ $$
 
 확률적 경사하강법은 전체 데이터가 아니라 랜덤하게 추출한 일부데이터를 사용하기 때문에 불안정하고 오차율이 큽니다. 이러한 단점을 보완하기 위한 방법이 Mini batch를 이용한 방법입니다.
 
-![sgd-mini](C:\GitHub\NumericalAnalysisProject-SGD\img\sgd-mini.png)
+![sgd-mini](img\sgd-mini.png)
 
 노이즈가 많이 줄어든 모습을 볼 수 있습니다.
 
@@ -85,6 +91,8 @@ tensorflow를 이용하였고, 모든 코드는 선형회귀에 이용되는것�
 
 
 **전체코드**
+
+`sgd with keras.py`
 
 ```python
 from sklearn.datasets import make_regression
@@ -268,7 +276,7 @@ def training(self):
 
 `make_regression` 함수를 통해 생성된 랜덤 데이터의 W(weight)값은 58.797782 에 근사하고, b(bias)값은 10.391333에 근사합니다. loss값은 98.185654에 근사합니다.
 
-이를 토대로 단위테스트용 코드를 작성해 보았습니다.
+이를 토대로 단위테스트용 코드를 작성해 보았습니다. 
 
 
 
@@ -372,7 +380,7 @@ step:1000, loss:98.185654, W:58.797707, b:10.397291
 
 **그래프**
 
-![sgd-tf-graph](C:\GitHub\NumericalAnalysisProject-SGD\img\sgd-tf-graph.PNG)
+![sgd-tf-graph](img\sgd-tf-graph.PNG)
 
 
 
@@ -391,6 +399,8 @@ step:1000, loss:98.185654, W:58.797707, b:10.397291
 
 
 **전체코드**
+
+`sgd_numpy.py`
 
 ```python
 import numpy as np
@@ -669,6 +679,8 @@ update할때 sampling 되는 data의 batch size는 20입니다. 전체 data size
 
 테스트의 실행은 이 문단 마지막에 한번에 하겠습니다.
 
+단위테스트 파일은 `sgd_unittest.py` 입니다.
+
 
 
 **predict**
@@ -788,7 +800,7 @@ def test_stochastic_gradient_descent(self):
 
 여기서 인공 데이터로 넣어준 data_x, data_y는 기본적인 선형 그래프로 아래 식을 의미합니다.
 
-![test-data](C:\GitHub\NumericalAnalysisProject-SGD\img\test-data.PNG)
+![test-data](img\test-data.PNG)
 $$
 f(x) = x
 $$
@@ -873,7 +885,7 @@ if __name__ == "__main__":
 
 다음 코드를 실행하면 처음에 original data가 표시되게 됩니다.
 
-![std-origin](C:\GitHub\NumericalAnalysisProject-SGD\img\std-origin.PNG)
+![std-origin](C:img\std-origin.PNG)
 
 
 
@@ -909,7 +921,7 @@ fianl :  7.830029653074914 56.983825546944914
 
 **결과 그래프**
 
-![sgd-fitting](C:\GitHub\NumericalAnalysisProject-SGD\img\sgd-fitting.PNG)
+![sgd-fitting](img\sgd-fitting.PNG)
 
 학습이 진행된 후에 피팅된 결과를 확인할 수 있습니다. 안정적으로 피팅되었습니다.
 
@@ -920,3 +932,167 @@ fianl :  7.830029653074914 56.983825546944914
 ### 5. 최적화 알고리즘 검증 - 로젠브록 함수
 
 #### 5.1. 로젠브록 함수 개요
+
+로젠브록 함수는 수학적 최적화에서 최적화 알고리즘을 시험하는데 사용하는 비볼록함수입니다. 로젠브록의 골짜기 또는 로젠브록의 바나나 함수라고도 합니다. 함수식은 다음과 같습니다
+$$
+f(x,y) = (a - x)^2 + b(y-x^2)^2
+$$
+일반적으로 a=1, b=100 을 대입해 사용합니다. 변수를 대입하여 그래프를 그려보면 다음과 같은 형태가 나타나게 됩니다.
+
+![rosenbrock](img\rosenbrock.png)
+
+
+
+이 함수의 골짜기를 찾고, 최솟값으로 수렴하는것이 로젠브록 함수를 이용한 알고리즘 검증의 목표입니다.
+
+로젠브록 함수는 (1, 1)에서 최솟값을 가집니다.
+
+
+
+---
+
+#### 5.2. 로젠브록 함수를 이용한 최적화 알고리즘 검증
+
+**전체코드**
+
+`sgd_rosenbrock.py`
+
+```python
+import random
+import unittest
+import math
+from sklearn.utils import shuffle
+from matplotlib import pyplot as plt
+import numpy as np
+
+random.seed(0)
+
+import warnings
+warnings.filterwarnings('ignore')
+
+def rosenbrock(a, b, x, y):
+    out = (a - x)**2 + b*(y - x**2)**2
+    return out
+
+def rosenbrock_grad(a, b, x, y):
+    grad_x = -2*(a - x) - 4*b*(y - x**2)*x
+    grad_y = 2*b*(y - x**2)
+    return grad_x, grad_y
+
+def rosenbrock_sgd(initial_x, initial_y, a, b, n_epochs, lr, tolerance):
+    out_prev = -math.inf
+    final_x = initial_x
+    final_y = initial_y
+    stop_epoch = 0
+    for epoch in range(n_epochs):
+        out = rosenbrock(a, b, final_x, final_y)
+        if abs(out - out_prev) <= tolerance:
+            return final_x, final_y, stop_epoch
+        out_prev = out
+        grad_x, grad_y = rosenbrock_grad(a, b, final_x, final_y)
+        final_x = final_x - lr * grad_x
+        final_y = final_y - lr * grad_y
+        stop_epoch = epoch
+        if epoch%100 == 0:
+            print(final_x, final_y)
+            
+    return final_x, final_y, n_epochs
+
+class TestRosenBrock(unittest.TestCase):
+    def test_sgd(self):
+        final_x, final_y, stop_epoch = rosenbrock_sgd(0, 0, 1, 100, 1, 0.001, 1e-06)
+        print(final_x, final_y, stop_epoch)
+        self.assertAlmostEqual(final_x, 0.002, places = 4)
+        self.assertAlmostEqual(final_y, 0, places = 4)
+        self.assertAlmostEqual(stop_epoch, 1, places = 4)
+
+        final_x, final_y, stop_epoch = rosenbrock_sgd(0, 0, 1, 100, 5, 0.001, 1e-06)
+        print(final_x, final_y, stop_epoch)
+        self.assertAlmostEqual(final_x, 0.009959805751775453, places = 4)
+        self.assertAlmostEqual(final_y, 2.091e-05, places = 4)
+        self.assertAlmostEqual(stop_epoch, 5, places = 4)
+        
+        final_x, final_y, stop_epoch = rosenbrock_sgd(0, 0, 1, 100, 100000, 0.001, 1e-06)
+        print(final_x, final_y, stop_epoch)
+        self.assertAlmostEqual(final_x, 0.965628504058544, places = 4)
+        self.assertAlmostEqual(final_y, 0.932297997695398, places = 4)
+        self.assertAlmostEqual(stop_epoch,  5570, places = 4)
+
+if __name__ == '__main__':
+    unittest.main(argv=['first-arg-is-ignored'], exit=False)
+    print("----------------------------------------------------------------------")
+    final_x, final_y, stop_epoch = rosenbrock_sgd(0, 0, 1, 100, 100000, 0.001, 1e-06)
+    x0 = np.linspace(-4, 4, 800)
+    x1 = np.linspace(-3, 3, 600)
+    X, Y = np.meshgrid(x0, x1)
+    Z = rosenbrock(1, 100, X, Y)
+
+    levels = np.logspace(-1, 3, 10)
+    plt.contourf(X, Y, Z, alpha=0.2, levels=levels)
+    plt.contour(X, Y, Z, colors="gray",
+                levels=[0.4, 3, 15, 50, 150, 500, 1500, 5000])
+    plt.plot(final_x, final_y, 'ro', markersize=10)
+    plt.xlim(-4, 4)
+    plt.ylim(-3, 3)
+    plt.xticks(np.linspace(-4, 4, 9))
+    plt.yticks(np.linspace(-3, 3, 7))
+    plt.xlabel('x', fontsize=14)
+    plt.ylabel('y', fontsize=14)
+    plt.show()
+```
+
+
+
+간략하게 설명하자면, 로젠브록 함수를 이용하여 sgd를 실행하고 최저점을 찾아가는지 확인하는 함수입니다.
+
+단위테스트에서는 sgd가 올바른 값을 찾는지 확인합니다.
+
+다음 코드의 실행결과는 다음과 같습니다.
+
+
+
+**결과**
+
+```
+----------------------------------------------------------------------
+Ran 1 test in 0.034s
+
+OK
+----------------------------------------------------------------------
+0.002 0.0
+0.5091101516514007 0.2567324884290021
+0.6741169953461323 0.4528720987024939
+0.7641732172660035 0.5828791241810489
+0.822300732947935 0.6753890067974332
+0.8629180770667808 0.7440325498272709
+0.8926292890395597 0.7963289748622447
+0.9150105178669233 0.8368864175397555
+0.932212841804738 0.8687382807091291
+0.9456265368531914 0.8939847525351515
+0.9561979340674678 0.9141345406364753
+0.9645965833012041 0.930301853396549
+```
+
+
+
+**그래프**
+
+![rosenbrock-sgd](img\rosenbrock-sgd.JPG)
+
+> 화살표를 이용하여 그리는 방법을 해당 코드 내에서는 모르겠어서 그리지 못했습니다...
+
+
+
+(1, 1) 을 잘 찾아 가는 모습을 확인할 수 있습니다.
+
+
+
+---
+
+### 6. 프로젝트 소감
+
+> 사실 이번 프로젝트를 처음 받았을때는 난감하고 어려웠습니다. 수치해석 과목이 어려운 내용을 다루고 있는 만큼 공부해야 할 것도 많았기 때문에, 이 프로젝트를 구현할 수 있을지 조차 미지수였습니다. 프로젝트 기간이 다행히 늘어나 자료를 조사하고 공부할 수 있어서 다행이라고 생각합니다.
+>
+> 이번 프로젝트에서는 코드가 원하는대로 돌아가지 않고, 생각한대로 구현되지 않을 때가 많았습니다. 데이터들은 내가 원하는 대로 움직이지 않았고 그를 고치는 과정 또한 어려웠습니다. 하지만 이렇게 프로젝트를 완성하고 보니 하고자 하는 마음만 있으면 못할것은 없구나 생각했습니다.
+>
+> 기말고사 기간과 프로젝트가 조금 겹쳐있는데, 밤 새가며 프로젝트를 완성하고 시험을 준비하는 과정은 꽤나 고단했습니다. 만약 대면수업이었다면 아마 학교에서 몇일 밤을 새지 않았을까 싶습니다. 그럼에도 불구하고 이번 프로젝트는 제가 여태까지 해보지 않았던 종류의 프로젝트였기 때문에 제 스스로 성장해보는 기회가 되었다고 생각합니다.
